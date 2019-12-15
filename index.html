@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Parisienne&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body style="background-color: #061458;">
+
+    <header>
+        <nav class="black accent-4">
+            <div class="nav-wrapper"> 
+                <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-large-only"><i class="material-icons">menu</i></a>
+
+                <a href="#" class="brand-logo">MoviesFLV</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="Designer.html"> <i class="material-icons left">face</i>Designer</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <ul id="slide-out" class="sidenav white-text" style="font-family: 'Permanent Marker', cursive;background-color:  #061458;">
+            <li><center><h3 style="color: yellow;font-family: 'Permanent Marker', cursive;">MoviesFLV</h3></center> </li>
+            <br><br>
+            <hr style="border-color:yellow;">
+            <li><a href="Designer.html" style="color: turquoise;"> <i class="material-icons left "	style="color: turquoise;">face</i>Designer</a></li>
+            <hr style="border-color:yellow;">
+        </ul>
+       
+    </header>
+
+    <main>
+        <!-- Slider -->
+
+        <div class="slider">
+            <ul class="slides">
+                <li>
+                    <img src="https://www.jakks.com/img/slider/F2_Carousel-Banner_3000x1038-V2.jpg">
+                    <!-- random image -->
+                    <div class="caption center-align">
+                        <h3 style="color: #8B0919;font-family: 'Permanent Marker', cursive;">Premieres</h3>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://www.movienewsletters.net/media/slider/1200x444/249997.jpg"> <!-- random image -->
+                    <div class="caption center-align">
+                        <h3 style="color: yellow;font-family: 'Permanent Marker', cursive;">Premieres</h3>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://www.movienewsletters.net/media/slider/1200x444/291168.jpg"> <!-- random image -->
+                    <div class="caption center-align">
+                        <h3 style="color: purple;font-family: 'Permanent Marker', cursive;">Premieres</h3>
+                        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://my.kapook.com/imagescontent/fb_img/130/s_191554_6908.jpg"> <!-- random image -->
+                    <div class="caption center-align">
+                        <h3 style="color:white;font-family: 'Permanent Marker', cursive;">Soon</h3>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- fin slider -->
+
+
+
+
+
+
+
+        <div id="MoviesFLV">
+            <center>
+                <h2 style="color: yellow;font-family: 'Permanent Marker', cursive;">MoviesFLV</h2>
+            </center>
+
+            <div class="row">
+                <div class="col l11 offset-2" style="padding-left: 8%;">
+                    <div>
+                        <ul>
+                            <li v-for="item in PopularMovies" class="col l2 m4 s6">
+                                <div class="card-panel center" style="background-color: black; height: 500px;">
+                                    <p style="color:white; font-family: 'Permanent Marker', cursive;">
+                                        <p style="color: #8B0919;font-family: 'Permanent Marker', cursive;">
+                                            {{item.title}}
+                                        </p>
+                                        <img :src="url_imagen + item.poster_path" height="250" class=" z-depth-3"> <br>
+                                        <p style="color:white;font-family: 'Permanent Marker', cursive;">
+                                            Score: {{item.vote_average}} <br>
+                                            Release Date: {{item.release_date}} <br><br>
+                                            <button @click="ver_modal(item)" class="btn"
+                                                style="background-color: slategrey;">Synopsis
+                                                <i class="material-icons right">visibility</i>
+                                            </button>
+                                        </p>
+                                    </p>
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+                <div v-if="PopularMov != null">
+                    <div class="modal-content"
+                        style="font-family: 'Permanent Marker', cursive;background-color:dimgray;">
+                        <h4 style="color: darkred;">{{PopularMov.title}}</h4> <br>
+                        <div class="row">
+                            <div class="col l3 m3 s12">
+                                <img :src="url_imagen + PopularMov.poster_path" height="250" class=" z-depth-3">
+                            </div>
+                            <div class="col l9 m9 s12">
+                                <h5>{{PopularMov.overview}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer"
+                        style="font-family: 'Permanent Marker', cursive; background-color:dimgray;">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+                            style="color: yellow;">Back</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <br><br><br><br><br>
+
+    <footer style="background-color: black; color: white;">
+        <hr>
+        <h1 class="center" style="font-family: 'Parisienne', cursive;">Contacts</h1>
+        <center>
+            <div class="row center">
+                <div class="col l2" style="padding-left: 37%; padding-right: 5%;">
+                    <img src="https://img.icons8.com/color/40/000000/instagram-new.png">
+                </div>
+
+                <div class="col l1">
+                    <img src="https://img.icons8.com/color/40/000000/facebook.png">
+                </div>
+
+                <div class="col l1">
+                    <img src="https://img.icons8.com/color/40/000000/tumblr.png">
+                </div>
+
+                <div class="col l1">
+                    <img src="https://img.icons8.com/color/40/000000/twitter.png">
+                </div>
+            </div>
+        </center>
+        <br><br>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        new Vue({
+            el: '#MoviesFLV',
+            data: {
+                PopularMovies: [],
+                url: 'https://api.themoviedb.org/3/movie/popular?api_key=7e38bf7d7727f2c0ac63b558261d8d19&language=es-ES&page=1',
+                url_imagen: "https://image.tmdb.org/t/p/w500",
+                PopularMov: null
+
+            },
+            methods: {
+                async cargar() {
+                    var resultado = await axios.get(this.url);
+                    this.PopularMovies = resultado.data.results;
+                    console.log(resultado.data);
+                },
+                ver_modal(item) {
+                    this.PopularMov = item;
+                    var instance = M.Modal.getInstance(document.getElementById('modal1'));
+                    instance.open();
+                }
+            },
+
+
+
+            created() {
+                this.cargar();
+            },
+            mounted() {
+                document.addEventListener('DOMContentLoaded', function () {
+                    var elems = document.querySelectorAll('.modal');
+                    var instances = M.Modal.init(elems);
+                });
+            },
+
+        });
+
+
+
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.slider');
+            var instances = M.Slider.init(elems, {
+                height: 800,
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var sidenav = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(sidenav,);
+        });
+    </script>
+
+
+</body>
+
+</html>
